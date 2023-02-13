@@ -25,6 +25,7 @@
 #include "module/util/http/httpclient.h"
 #include "module/util/runner.h"
 #include "module/util/sysinfo.h"
+#include "module/util/version/semver.h"
 #include "package_manager_p.h"
 
 namespace linglong {
@@ -1127,23 +1128,14 @@ Reply PackageManagerPrivate::Update(const ParamOption &paramOption)
         return reply;
     }
 
+
     auto serverApp = getLatestApp(appId, serverPkgList);
-    if (currentVersion == serverApp->version) {
+    
+    if (linglong::util::compareVersion(currentVersion, serverApp->version) >= 0) {
         reply.message = "app:" + appId + ", latest version:" + currentVersion + " already installed";
         qCritical() << reply.message;
         // bug 149881
         reply.code = STATUS_CODE(kErrorPkgUpdateSuccess);
-        appState.insert(appId + "/" + version + "/" + arch, reply);
-        return reply;
-    }
-
-    // 判断是否已安装最新版本软件
-    if (linglong::util::getAppInstalledStatus(appId, serverApp->version, arch, channel, appModule, "")) {
-        reply.message = appId + ", latest version:" + serverApp->version + " already installed";
-        qCritical() << reply.message;
-        // bug 149881
-        reply.code = STATUS_CODE(kErrorPkgUpdateSuccess);
-
         appState.insert(appId + "/" + version + "/" + arch, reply);
         return reply;
     }

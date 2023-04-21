@@ -5,6 +5,7 @@ linglong (1.3.7-1) unstable; urgency=medium
   * feat: builder add offline parameter
   * fix: Unable to get the latest local ref
   * feat: add a section to the desktop entry
+  * fix: install app with default verison is wrong 
 
  -- chenlinxuan <chenlinxuan@uniontech.com>  Mon, 03 Apr 2023 17:25:33 +0800
 

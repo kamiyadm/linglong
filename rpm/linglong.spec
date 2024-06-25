@@ -1,9 +1,9 @@
 Name:           linglong
-Version:        1.4.3
+Version:        1.5.6
 Release:        1
 Summary:        Linglong Package FrameWork
 License:        LGPLv3
-URL:            https://github.com/linuxdeepin/%{name}
+URL:            https://github.com/kamiyadm/%{name}
 Source0:        %{url}/archive/%{version}/linglong-%{version}.tar.gz
 
 BuildRequires:  cmake gcc-c++
@@ -119,5 +119,7 @@ cd build
 %{_bindir}/ll-box
 
 %changelog
+* Thu June 25 2024 chenhuixing <chenhuixing@deepin.org> - 1.5.6-1
+- Release 1.5.6
 * Thu Apr 25 2024 chenhuixing <chenhuixing@deepin.org> - 1.4.3-1
 - Init project

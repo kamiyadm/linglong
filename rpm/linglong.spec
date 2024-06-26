@@ -1,5 +1,5 @@
 Name:           linglong
-Version:        1.5.6
+Version:        1.5.6.1
 Release:        1
 Summary:        Linglong Package FrameWork
 License:        LGPLv3
@@ -56,6 +56,7 @@ cd build
 
 %post -n linglong-bin
 %systemd_post org.deepin.linglong.PackageManager.service
+busctl call org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus ReloadConfig
 
 %preun -n linglong-bin
 %systemd_preun org.deepin.linglong.PackageManager.service

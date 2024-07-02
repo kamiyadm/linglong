@@ -56,7 +56,7 @@ cd build
 
 %post -n linglong-bin
 %systemd_post org.deepin.linglong.PackageManager.service
-busctl call org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus ReloadConfig
+/usr/bin/busctl call org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus ReloadConfig
 
 %preun -n linglong-bin
 %systemd_preun org.deepin.linglong.PackageManager.service

@@ -1,5 +1,5 @@
 Name:           linglong
-Version:        1.5.6.1
+Version:        1.5.6.2
 Release:        1
 Summary:        Linglong Package FrameWork
 License:        LGPLv3
@@ -19,6 +19,7 @@ This package is a linglong package framework.
 %package        -n linglong-bin
 Summary:        Linglong package manager
 Requires:       linglong-box = %{version}-%{release}
+Requires:       linglong-installer
 %description    -n linglong-bin
 Linglong package management command line tool.
 
@@ -120,7 +121,7 @@ cd build
 %{_bindir}/ll-box
 
 %changelog
-* Thu June 25 2024 chenhuixing <chenhuixing@deepin.org> - 1.5.6-1
-- Release 1.5.6
+* Thu June 25 2024 chenhuixing <chenhuixing@deepin.org> - 1.5.6.2-1
+- Release 1.5.6.2
 * Thu Apr 25 2024 chenhuixing <chenhuixing@deepin.org> - 1.4.3-1
 - Init project

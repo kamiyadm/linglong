@@ -69,6 +69,7 @@ cd build
 %doc README.md
 %license LICENSE
 %exclude %{_libdir}/cmake/linglong-*/*.cmake
+%exclude %{_datadir}/polkit-1/actions/org.deepin.linglong.PackageManager.policy
 
 %files -n linglong-bin
 %doc README.md

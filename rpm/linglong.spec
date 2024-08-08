@@ -1,5 +1,5 @@
 Name:           linglong
-Version:        1.5.6.2
+Version:        1.5.6.3
 Release:        1
 Summary:        Linglong Package FrameWork
 License:        LGPLv3
@@ -121,7 +121,7 @@ cd build
 %{_bindir}/ll-box
 
 %changelog
-* Thu June 25 2024 chenhuixing <chenhuixing@deepin.org> - 1.5.6.2-1
+* Thu June 25 2024 chenhuixing <chenhuixing@deepin.org> - 1.5.6.3-1
 - Release 1.5.6.2
 * Thu Apr 25 2024 chenhuixing <chenhuixing@deepin.org> - 1.4.3-1
 - Init project

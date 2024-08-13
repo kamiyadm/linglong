@@ -1,5 +1,5 @@
 Name:           linglong
-Version:        1.5.6.3
+Version:        1.5.6.4
 Release:        1
 Summary:        Linglong Package FrameWork
 License:        LGPLv3
@@ -19,13 +19,14 @@ This package is a linglong package framework.
 %package        -n linglong-bin
 Summary:        Linglong package manager
 Requires:       linglong-box = %{version}-%{release}
-Requires:       linglong-installer
+Requires:       linglong-installer erofsfuse
 %description    -n linglong-bin
 Linglong package management command line tool.
 
 %package        -n linglong-builder
 Summary:        Linglong build tools
 Requires:       linglong-box = %{version}-%{release} linglong-bin = %{version}-%{release}
+Requires:       erofsutils erofsfuse
 %description    -n linglong-builder
 This package is a tool that makes it easy to build applications and dependencies.
 
@@ -122,7 +123,7 @@ cd build
 %{_bindir}/ll-box
 
 %changelog
-* Thu June 25 2024 chenhuixing <chenhuixing@deepin.org> - 1.5.6.3-1
+* Thu June 25 2024 chenhuixing <chenhuixing@deepin.org> - 1.5.6.4-1
 - Release 1.5.6.2
 * Thu Apr 25 2024 chenhuixing <chenhuixing@deepin.org> - 1.4.3-1
 - Init project

@@ -19,14 +19,14 @@ This package is a linglong package framework.
 %package        -n linglong-bin
 Summary:        Linglong package manager
 Requires:       linglong-box = %{version}-%{release}
-Requires:       linglong-installer erofsfuse
+Requires:       linglong-installer erofs-fuse
 %description    -n linglong-bin
 Linglong package management command line tool.
 
 %package        -n linglong-builder
 Summary:        Linglong build tools
 Requires:       linglong-box = %{version}-%{release} linglong-bin = %{version}-%{release}
-Requires:       erofsutils erofsfuse
+Requires:       erofs-utils erofs-fuse
 %description    -n linglong-builder
 This package is a tool that makes it easy to build applications and dependencies.
 
@@ -35,10 +35,14 @@ Summary:        Linglong sandbox
 %description    -n linglong-box
 Linglong sandbox with OCI standard.
 
+%package        -n linglong-installer
+Summary:        Linglong web store installer
+Requires:       linglong-bin = %{version}-%{release}
+%description    -n linglong-installer
+Linglong web store installer.
+
 %prep
 %autosetup -p1 -n linglong-%{version}
-
-%define _debugsource_template %{nil}
 
 %build
 export PATH=%{_qt5_bindir}:$PATH
@@ -49,8 +53,9 @@ cmake -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
       -DSYSCONF_INSTALL_DIR:PATH=%{_sysconfdir} \
       -DSHARE_INSTALL_PREFIX:PATH=%{_datadir} \
       -DBUILD_SHARED_LIBS=OFF \
-      -DCPM_LOCAL_PACKAGES_ONLY=ON ..
-%make_build
+      -DCPM_LOCAL_PACKAGES_ONLY=ON \
+      -DENABLE_LINGLONG_INSTALLER=ON ..
+%make_build -j4
 
 %install
 cd build
@@ -71,6 +76,8 @@ cd build
 %license LICENSE
 %exclude %{_libdir}/cmake/linglong-*/*.cmake
 %exclude %{_datadir}/polkit-1/actions/org.deepin.linglong.PackageManager.policy
+%{_prefix}/src/*
+
 
 %files -n linglong-bin
 %doc README.md
@@ -104,7 +111,7 @@ cd build
 %{_datadir}/%{name}/config.yaml
 %{_datadir}/mime/packages/*
 %{_datadir}/%{name}/api/api.json
-%{_datadir}/applications/*.desktop
+%{_datadir}/applications/linglong-repair-tool.desktop
 
 %files -n linglong-builder
 %license LICENSE
@@ -122,8 +129,13 @@ cd build
 %license LICENSE
 %{_bindir}/ll-box
 
+%files -n linglong-installer
+%license LICENSE
+%{_bindir}/ll-installer
+%{_datadir}/applications/linglong-store-installer.desktop
+
 %changelog
-* Thu June 25 2024 chenhuixing <chenhuixing@deepin.org> - 1.5.6.4-1
-- Release 1.5.6.2
+* Thu Aug 22 2024 chenhuixing <chenhuixing@deepin.org> - 1.5.6.4-1
+- Release 1.5.6.4
 * Thu Apr 25 2024 chenhuixing <chenhuixing@deepin.org> - 1.4.3-1
 - Init project

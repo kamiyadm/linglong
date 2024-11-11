@@ -677,8 +677,8 @@ ll-cli list --upgradable
           auto migrateOption = commandParser.get_subcommand("migrate");
           if (repo->needMigrate() && !migrateOption->parsed()) {
               notifier->notify(linglong::api::types::v1::InteractionRequest{
-                .summary = "The old data is found locally and needs to be migrated. Please run "
-                           "'ll-cli migrate' and wait for the migration to complete." });
+                .summary = _("The old data is found locally and needs to be migrated. Please run "
+                           "'ll-cli migrate' and wait for the migration to complete.") });
               QCoreApplication::exit(-1);
               return;
           }

@@ -662,15 +662,8 @@ ll-cli list --upgradable
               }
           }
 
-          if (noDBus) {
-              notifier.reset();
-              notifier = std::make_unique<linglong::cli::DummyNotifier>();
-          }
-
           if (!notifier) {
-              qCritical() << "no available notifier, exit";
-              QCoreApplication::exit(-1);
-              return;
+              notifier = std::make_unique<linglong::cli::DummyNotifier>();
           }
 
           // Note: Make sure migrateion is completed before other operations if need migrate here.
